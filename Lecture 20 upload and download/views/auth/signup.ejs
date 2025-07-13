@@ -1,0 +1,140 @@
+<%- include('../partials/head') %>
+</head>
+<body class="bg-gradient-to-br from-rose-100 via-white to-rose-50 min-h-screen flex flex-col font-['Segoe_UI']">
+
+  <%- include('../partials/nav') %>
+
+  <main class="flex-grow flex items-center justify-center px-4 py-10">
+    <div class="relative w-full max-w-lg bg-white shadow-[0_25px_60px_-15px_rgba(0,0,0,0.2)] rounded-3xl px-10 py-12 border border-gray-100 overflow-hidden">
+
+      <!-- Decorative blur circles -->
+      <div class="absolute -top-10 -left-10 w-36 h-36 bg-rose-100 rounded-full opacity-20 blur-2xl"></div>
+      <div class="absolute -bottom-10 -right-10 w-36 h-36 bg-yellow-100 rounded-full opacity-20 blur-2xl"></div>
+
+      <!-- Brand Title -->
+      <h1 class="text-3xl font-extrabold text-center text-rose-600 mb-1 tracking-widest">Welcome to Nestro</h1>
+      <p class="text-center text-sm text-gray-500 mb-8">Create an account to start hosting or booking</p>
+
+      <!-- Registration Form -->
+      <form action="/signup" method="POST" class="space-y-5 relative z-10">
+        <%- include('../partials/errors') %>
+
+        <!-- First Name -->
+        <div>
+          <input
+            type="text"
+            name="firstName"
+            placeholder="First Name"
+            value="<%= oldInput.firstName ? oldInput.firstName : '' %>"
+            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-rose-400 focus:outline-none text-sm shadow-sm"
+            required
+          />
+        </div>
+
+        <!-- Last Name -->
+        <div>
+          <input
+            type="text"
+            name="lastName"
+            placeholder="Last Name"
+            value="<%= oldInput.lastName ? oldInput.lastName : '' %>"
+            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-rose-400 focus:outline-none text-sm shadow-sm"
+            required
+          />
+        </div>
+
+        <!-- Email -->
+        <div>
+          <input
+            type="email"
+            name="email"
+            placeholder="e.g. you@example.com"
+            value="<%= oldInput.email ? oldInput.email : '' %>"
+            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-rose-400 focus:outline-none text-sm shadow-sm"
+            required
+          />
+        </div>
+
+        <!-- Password -->
+        <div>
+          <input
+            type="password"
+            name="password"
+            placeholder="Enter your password"
+            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-rose-400 focus:outline-none text-sm shadow-sm"
+            required
+          />
+        </div>
+
+        <!-- Confirm Password -->
+        <div>
+          <input
+            type="password"
+            name="confirmPassword"
+            placeholder="Confirm your password"
+            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-rose-400 focus:outline-none text-sm shadow-sm"
+            required
+          />
+        </div>
+
+        <!-- User Type (Guest / Host) -->
+        <div class="flex justify-between items-center space-x-4">
+          <label class="flex items-center space-x-2 text-sm text-gray-700">
+            <input
+              type="radio"
+              name="userType"
+              value="guest"
+              checked="<%= oldInput.userType === 'guest' %>"
+              class="text-rose-500 focus:ring-rose-400"
+            />
+            <span>Guest</span>
+          </label>
+          <label class="flex items-center space-x-2 text-sm text-gray-700">
+            <input
+              type="radio"
+              name="userType"
+              value="host"
+              checked="<%= oldInput.userType === 'host' %>"
+              class="text-rose-500 focus:ring-rose-400"
+            />
+            <span>Host</span>
+          </label>
+        </div>
+
+        <!-- Terms & Conditions -->
+        <div>
+          <label class="flex items-center space-x-2 text-sm text-gray-600">
+            <input
+              type="checkbox"
+              name="terms"
+              required
+              class="form-checkbox text-rose-500 focus:ring-rose-400"
+            />
+            <span>
+              I agree to the
+              <a href="#" class="text-rose-500 hover:underline font-medium">terms and conditions</a>
+            </span>
+          </label>
+        </div>
+
+        <!-- Submit -->
+        <div>
+          <button
+            type="submit"
+            class="w-full bg-rose-500 hover:bg-rose-600 text-white py-2.5 rounded-lg font-semibold text-sm tracking-wide transition-transform transform hover:-translate-y-0.5 shadow-md"
+          >
+            Register
+          </button>
+        </div>
+
+        <!-- Already Registered -->
+        <p class="text-center text-sm text-gray-500 mt-4">
+          Already have an account?
+          <a href="/login" class="text-rose-500 hover:underline font-medium">Sign in</a>
+        </p>
+      </form>
+    </div>
+  </main>
+
+</body>
+</html>
