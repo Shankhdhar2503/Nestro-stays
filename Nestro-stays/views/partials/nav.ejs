@@ -1,0 +1,83 @@
+<header class="bg-rose-500 text-white shadow-md">
+  <nav class="container mx-auto flex justify-between items-center py-3 px-4">
+    <ul class="flex flex-wrap items-center space-x-4 text-sm font-medium">
+
+      <!-- Brand -->
+      <li>
+        <a
+          href="/"
+          class="<%= currentPage === 'index' ? 'bg-rose-400' : 'hover:bg-rose-400' %> py-2 px-4 rounded transition duration-300"
+        >
+          Nestro
+        </a>
+      </li>
+
+      <% if (isLoggedin) { %>
+
+        <% if (user && user.userType === 'guest') { %>
+          <!-- Guest Links -->
+          <li>
+            <a
+              href="/homes"
+              class="<%= currentPage === 'Home' ? 'bg-rose-400' : 'hover:bg-rose-400' %> py-2 px-4 rounded transition duration-300"
+            >Homes List</a>
+          </li>
+          <li>
+            <a
+              href="/favourites"
+              class="<%= currentPage === 'favourites' ? 'bg-rose-400' : 'hover:bg-rose-400' %> py-2 px-4 rounded transition duration-300"
+            >Favourites</a>
+          </li>
+          <li>
+            <a
+              href="/bookings"
+              class="<%= currentPage === 'bookings' ? 'bg-rose-400' : 'hover:bg-rose-400' %> py-2 px-4 rounded transition duration-300"
+            >Bookings</a>
+          </li>
+        <% } else { %>
+          <!-- Host Links -->
+          <li>
+            <a
+              href="/host/host-home-list"
+              class="<%= currentPage === 'host-homes' ? 'bg-rose-400' : 'hover:bg-rose-400' %> py-2 px-4 rounded transition duration-300"
+            >Host Homes</a>
+          </li>
+          <li>
+            <a
+              href="/host/add-home"
+              class="<%= currentPage === 'addHome' ? 'bg-rose-400' : 'hover:bg-rose-400' %> py-2 px-4 rounded transition duration-300"
+            >Add Home</a>
+          </li>
+        <% } %>
+
+        <!-- Logout -->
+        <li>
+          <form action="/logout" method="POST">
+            <button
+              type="submit"
+              class="hover:bg-rose-400 py-2 px-4 rounded transition duration-300"
+            >
+              Logout
+            </button>
+          </form>
+        </li>
+
+      <% } else { %>
+        <!-- Unauthenticated Links -->
+        <li>
+          <a
+            href="/signup"
+            class="hover:bg-rose-400 py-2 px-4 rounded transition duration-300"
+          >Signup</a>
+        </li>
+        <li>
+          <a
+            href="/host/login"
+            class="hover:bg-rose-400 py-2 px-4 rounded transition duration-300"
+          >Login</a>
+        </li>
+      <% } %>
+      
+    </ul>
+  </nav>
+</header>
